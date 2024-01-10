@@ -3,9 +3,11 @@ import styles from "./Form.module.css";
 
 export function Form() {
   return (
-    <form className={styles.form} action="">
-      <input className={styles.input} type="text" />
-      <Button>Add</Button>
-    </form>
+    <>
+      <form className={styles.form} action="">
+        <input className={styles.input} type="text" />
+        <Button onClick={() => alert("it works")}>Add</Button>
+      </form>
+    </>
   );
 }
