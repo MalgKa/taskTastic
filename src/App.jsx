@@ -1,10 +1,8 @@
 import styles from "./App.module.css";
 import { Form } from "./components/Form/Form";
 import { TodoItem } from "./components/TodoItem/TodoItem";
+import { getSubheading } from "./utils/getSubheading";
 
-function getSubHeading(numberOfTasks) {
-  return numberOfTasks > 1 ? `${numberOfTasks} tasks` : `${numberOfTasks} task`;
-}
 
 function App() {
   const todos = [
@@ -18,7 +16,7 @@ function App() {
       <header className={styles.header}>
         <div>
           <h1>to do</h1>
-          <h2>{getSubHeading(todos.length)}</h2>
+          <h2>{getSubheading(todos.length)}</h2>
         </div>
         <button className={styles.button}>+</button>
       </header>
