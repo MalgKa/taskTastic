@@ -8,9 +8,10 @@ function App() {
   const [isFormShown, setIsFormShown] = useState(false);
 
   const [todos, setTodos] = useState([
-    { name: "pay tax", done: false, id: 1 },
-    { name: "take out the trash", done: true, id: 2 },
-    { name: "buy milk", done: false, id: 3 },
+    { name: "feed cats", done: false, id: 1 },
+    { name: "pay tax", done: false, id: 2 },
+    { name: "take out the trash", done: true, id: 3 },
+    { name: "buy milk", done: false, id: 4 },
   ]);
 
 
