@@ -18,7 +18,7 @@ function App() {
   function addItem(newToDoName) {
     setTodos((prevTodos) => [
       ...prevTodos,
-      { name: newToDoName, done: false, id: prevTodos.at(-1).id + 1 },
+      { name: newToDoName, done: false, id: Math.random() },
     ]);
     setIsFormShown(false);
   }
