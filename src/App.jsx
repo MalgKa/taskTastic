@@ -4,15 +4,14 @@ import { Form } from "./components/Form/Form";
 import { TodoItem } from "./components/TodoItem/TodoItem";
 import { getSubheading } from "./utils/getSubheading";
 
-
 function App() {
   const [isFormShown, setIsFormShown] = useState(false);
 
-  const todos = [
+  const [todos, setTodos] = useState([
     { name: "pay tax", done: false, id: 1 },
     { name: "take out the trash", done: true, id: 2 },
-    { name: "buy milk", done: false, id: 2 },
-  ];
+    { name: "buy milk", done: false, id: 3 },
+  ]);
 
   return (
     <div className={styles.container}>
@@ -21,13 +20,30 @@ function App() {
           <h1>to do</h1>
           <h2>{getSubheading(todos.length)}</h2>
         </div>
-        {!isFormShown && <button onClick={() => setIsFormShown(true)} className={styles.button}>+</button>}
+        {!isFormShown && (
+          <button
+            onClick={() => setIsFormShown(true)}
+            className={styles.button}
+          >
+            +
+          </button>
+        )}
       </header>
-      {isFormShown && <Form />}
+      {isFormShown && (
+        <Form
+          onFormSubmit={(newToDoName) => {
+            setTodos((prevTodos) => [
+              ...prevTodos,
+              { name: newToDoName, done: false, id: prevTodos.length + 1 },
+            ]);
+            setIsFormShown(false);
+          }}
+        />
+      )}
       <ul>
-        {todos.map(({ id, name, done }) => {
-          return <TodoItem key={id} name={name} done={done} />;
-        })}
+        {todos.map(({ id, name, done }) => (
+          <TodoItem key={id} name={name} done={done} />
+        ))}
       </ul>
     </div>
   );

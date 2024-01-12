@@ -1,12 +1,26 @@
+import { useState } from "react";
 import { Button } from "../Button/Button";
 import styles from "./Form.module.css";
 
-export function Form() {
+export function Form({ onFormSubmit }) {
+  const [inputValue, setInputValue] = useState("");
+
   return (
     <>
-      <form className={styles.form} action="">
-        <input className={styles.input} type="text" />
-        <Button onClick={() => alert("it works")}>Add</Button>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onFormSubmit(inputValue);
+        }}
+        className={styles.form}
+      >
+        <input
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          className={styles.input}
+          type="text"
+        />
+        <Button>Add</Button>
       </form>
     </>
   );
