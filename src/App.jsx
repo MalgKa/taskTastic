@@ -51,6 +51,13 @@ function App() {
                 prevTodos.filter((todo) => todo.id !== id)
               );
             }}
+            onDoneButtonClick={() => {
+              setTodos((prevTodos) =>
+                prevTodos.map((todo) =>
+                  todo.id === id ? { ...todo, done: true } : todo
+                )
+              );
+            }}
           />
         ))}
       </ul>
