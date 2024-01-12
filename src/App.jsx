@@ -13,6 +13,29 @@ function App() {
     { name: "buy milk", done: false, id: 3 },
   ]);
 
+
+  function addItem(newToDoName) {
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { name: newToDoName, done: false, id: prevTodos.at(-1).id + 1 },
+    ]);
+    setIsFormShown(false);
+  }
+
+  function deleteItem(id) {
+    setTodos((prevTodos) =>
+      prevTodos.filter((todo) => todo.id !== id)
+    );
+  }
+
+  function doneItem(id) {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, done: true } : todo
+      )
+    );
+  }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -31,13 +54,7 @@ function App() {
       </header>
       {isFormShown && (
         <Form
-          onFormSubmit={(newToDoName) => {
-            setTodos((prevTodos) => [
-              ...prevTodos,
-              { name: newToDoName, done: false, id: prevTodos.at(-1).id + 1 },
-            ]);
-            setIsFormShown(false);
-          }}
+          onFormSubmit={(newToDoName) => addItem(newToDoName)}
         />
       )}
       <ul>
@@ -46,18 +63,8 @@ function App() {
             key={id}
             name={name}
             done={done}
-            onDeleteButtonClick={() => {
-              setTodos((prevTodos) =>
-                prevTodos.filter((todo) => todo.id !== id)
-              );
-            }}
-            onDoneButtonClick={() => {
-              setTodos((prevTodos) =>
-                prevTodos.map((todo) =>
-                  todo.id === id ? { ...todo, done: true } : todo
-                )
-              );
-            }}
+            onDeleteButtonClick={() => deleteItem(id)}
+            onDoneButtonClick={() => doneItem(id)}
           />
         ))}
       </ul>
