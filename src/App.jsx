@@ -42,7 +42,16 @@ function App() {
       )}
       <ul>
         {todos.map(({ id, name, done }) => (
-          <TodoItem key={id} name={name} done={done} />
+          <TodoItem
+            key={id}
+            name={name}
+            done={done}
+            onDeleteButtonClick={() => {
+              setTodos((prevTodos) =>
+                prevTodos.filter((todo) => todo.id !== id)
+              );
+            }}
+          />
         ))}
       </ul>
     </div>
