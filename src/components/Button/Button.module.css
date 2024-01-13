@@ -12,3 +12,10 @@
   background-color: var(--color-main);
   color: white;
 }
+
+.disabled {
+  background-color: #8080804d;
+  color: darkgray;
+  border: none;
+  pointer-events: none;
+}

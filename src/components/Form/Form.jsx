@@ -20,7 +20,7 @@ export function Form({ onFormSubmit }) {
           className={styles.input}
           type="text"
         />
-        <Button>Add</Button>
+        <Button isEmpty={inputValue === ''}>Add</Button>
       </form>
     </>
   );
